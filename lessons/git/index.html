@@ -77,12 +77,105 @@
           <section>
             <h2>Centralized Version Control</h2>
             <img src="img/centralized-version-control.png" />
+            <aside class="notes">
+              <ul>
+                <li>Why is this good / bad?</li>
+                <li>Good: We know who the authority is; control</li>
+                <li>Bad: Network overhead; permissions; downtime</li>
+                <li>Bad: single point of failure; no personal VC</li>
+              </ul>
+            </aside>
           </section>
 
           <section>
             <h2>Distributed Version Control</h2>
             <img src="img/distributed-version-control.png" />
+            <aside class="notes">
+              <ul>
+                <li>Almost all operations (except sync) are local</li>
+                <li>Good: local = fast (commit, diff, history, etc); personal VC</li>
+                <li>Good: local = airplane, no VPN OK; every clone is a backup</li>
+                <li>Bad(?): need to create workflow to coordinate</li>
+              </ul>
+            </aside>
           </section>
+
+          <section>
+            <h2>How do you Track Versions?</h2>
+            <p><b>File Deltas</b>: Database stores a sequence of diffs for each file.</p>
+            <p><b>Snapshots</b>: Database stores <em>snapshots</em> of the whole repository.</p>
+            <aside class="notes">
+              <p>Deltas: slow because you have to replay edit scripts.</p>
+            </aside>
+          </section>
+
+          <section>
+            <h2>File Delta Version Tracking</h2>
+            <img src="img/file-deltas-1.png" />
+            <aside class="notes">
+            </aside>
+          </section>
+
+          <section>
+            <h2>File Delta Version Tracking</h2>
+            <img src="img/file-deltas-2.png" />
+            <aside class="notes">
+            </aside>
+          </section>
+
+         <section>
+            <h2>File Delta Version Tracking</h2>
+            <img src="img/file-deltas-3.png" />
+            <aside class="notes">
+            </aside>
+         </section>
+
+         <section>
+            <h2>File Delta Version Tracking</h2>
+            <img src="img/file-deltas-4.png" />
+            <aside class="notes">
+            </aside>
+         </section>
+
+         <section>
+            <h2>Snapshot Version Tracking</h2>
+            <img src="img/snapshot-1.png" />
+            <aside class="notes">
+            </aside>
+         </section>
+
+         <section>
+            <h2>Snapshot Version Tracking</h2>
+            <img src="img/snapshot-2.png" />
+            <aside class="notes">
+              <ul>
+                <li><em>add</em> means add file contents to the snapshot</li>
+                <li>The SHA hash is a pointer into a key-value store.</li>
+              </ul>
+            </aside>
+         </section>
+
+         <section>
+            <h2>Snapshot Version Tracking</h2>
+            <img src="img/snapshot-3.png" />
+            <aside class="notes">
+              <ul>
+                <li>There is no history unless you walk through the manifests.</li>
+              </ul>
+            </aside>
+         </section>
+
+         <section>
+            <h2>Snapshot Version Tracking</h2>
+            <img src="img/snapshot-4.png" />
+            <aside class="notes">
+              <ul>
+                <li>A rename just changes the manifest pointer.
+              </ul>
+            </aside>
+         </section>
+
+
 
         </section>
 
@@ -139,6 +232,16 @@
           <h2>Exercise 5</h2>
         </section>
 
+        <section>
+          <h1>Attribution</h1>
+          <p>Thanks to:
+            <ul>
+              <li>Scott Chacon's Github presentation, which provided a template for much of the git intro.</li>
+              <li>Clip Art from: </li>
+            </ul>
+          </p>
+        </section>
+
 
       </div>
     </div>
@@ -161,9 +264,9 @@
 					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
 					//{ src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 					//{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					//{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					//{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-					//{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					{ src: 'lib/js/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'lib/js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'lib/js/notes.js', async: true, condition: function() { return !!document.body.classList; } }
 					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
 				]
 			});
