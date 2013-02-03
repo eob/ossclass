@@ -1,0 +1,14 @@
+safe:        false
+auto:        false
+server:      false
+server_port: 4000
+baseurl:     /6.S194
+url:         http://courses.csail.mit.edu
+source:      .
+destination: ./_site
+plugins:     ./_plugins
+future:      true
+lsi:         false
+pygments:    false
+markdown:    maruku
+permalink:   date
