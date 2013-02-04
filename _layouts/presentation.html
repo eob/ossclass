@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>{{ page.title }}</title>
+    <meta name="description" content="{{ page.description }}">
+		<meta name="author" content="Ted Benson">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <link rel="stylesheet" href="{{site.baseurl}}/css/slides/reveal.min.css" />
+    <link rel="stylesheet" href="{{site.baseurl}}/css/slides/{{ page.theme }}.css" id="theme" />
+  
+    <link rel="stylesheet" href="{{site.baseurl}}/css/slides/ted.css" />
+    <link rel="stylesheet" href="{{site.baseurl}}/css/slides/zenburn.css">
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+      {{ page.content }}
+      </div>
+    </div>
+
+<script src="{{site.baseurl}}/js/slides/head.min.js"></script>
+<script src="{{site.baseurl}}/js/slides/reveal.min.js"></script>
+<script>
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+        { src: '{{site.baseurl}}/js/slides/classList.js', condition: function() { return !document.body.classList; } },
+          //{ src: '{{site.baseurl}}/js/slides/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          //{ src: '{{site.baseurl}}/js/slides/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '{{site.baseurl}}/js/slides/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: '{{site.baseurl}}/js/slides/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: '{{site.baseurl}}/js/slides/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+          // { src: '{{site.baseurl}}/js/slides/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+</script>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-619489-20']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+  </body>
+</html>
