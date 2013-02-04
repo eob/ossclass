@@ -1,0 +1,14 @@
+.important {
+  color: red;
+  margin-top: 10px;
+}
+
+div.signup {
+  border-top: 1px solid #ddd;
+  margin-top: 10px;
+  padding-top: 10px;
+}
+
+li {
+  margin-top: 10px;
+}
