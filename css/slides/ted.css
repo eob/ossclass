@@ -1,0 +1,33 @@
+img {
+  border: 0 !important;
+  shadow: none;
+
+}
+
+table {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+table td {
+  padding: 2px !important;
+  padding-top: 18px !important;
+  padding-bottom: 18px !important;
+}
+
+table.lined td {
+  border-bottom: 1px solid #eee;
+}
+
+.cmd {
+  background-color: #0B2E59 !important;
+  color: #E33258 !important;
+  padding: 5px !important;
+  margin: 1px !important;
+  border-radius: 5px !important;
+  font-family: monospace !important;
+}
+
+p.large {
+  font-size: 1.3em;
+}
