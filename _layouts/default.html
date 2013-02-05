@@ -34,11 +34,11 @@
           <li {% if page.lozenge == 'calendar' %}class="active"{% endif %}><a href="{{ site.baseurl }}/calendar.html">Calendar</a></li>
           <li {% if page.lozenge == 'projects' %}class="active"{% endif %}><a href="{{ site.baseurl }}/projects.html">Projects</a></li>
         </ul>
-        <h3 class="muted">{{ page.mutedtitle }} &nbsp;</h3>
+        <h3 class="topright">{{ page.mutedtitle }} &nbsp;</h3>
       </div>
-
-      {{ page.content }}
-
+      <div class="content">
+        {{ content }}
+      </div>
       <div class="footer">
       </div>
 

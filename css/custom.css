@@ -12,3 +12,23 @@ div.signup {
 li {
   margin-top: 10px;
 }
+
+body {
+  background-image:url('../img/old_mathematics.png');
+  background-repeat: repeat-all;
+}
+
+div.content {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 15px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  margin-top: 25px;
+  padding: 10px;
+}
+
+.topright {
+  color: #08c; 
+}
+
+.mastheadjk
