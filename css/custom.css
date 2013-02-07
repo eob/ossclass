@@ -28,7 +28,9 @@ div.content {
 }
 
 .topright {
-  color: #08c; 
+  font-weight: bold;
+  padding-top: 5px;
+  color: #222; 
 }
 
 div.post {
