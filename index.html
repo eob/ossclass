@@ -7,14 +7,23 @@ lozenge: home
 
 <div class="row">
   <div class="span7 offset1">
+    {% for post in site.posts %}
     <div class="post">
-      <h3>Welcome</h3>
-      <time>Tuesday, 5 Feb 2013</time>
-      <div>
-        <p>Please bring your laptops to class on Wednesday if you have them.</p>
-        <p><a href="lessons/introduction/">Materials for class</a></p>
+      <div class="row">
+        <div class="span5">
+          <h3>{{post.title}}</h3>
+        </div>
+        <div class="span2">
+          <p class="time pull-right">{{ post.date | date: "%b %d" }}</p>
+        </div>
       </div>
-    </div>
+        <div class="postbody">
+          {{post.content}}
+        </div>
+        <div class="postfooter">
+        </div>
+      </div>
+  {% endfor %}
   </div>
   <div class="span3">
     <div class="row">

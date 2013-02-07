@@ -31,4 +31,26 @@ div.content {
   color: #08c; 
 }
 
-.mastheadjk
+div.post {
+}
+
+div.post h3 {
+}
+
+div.post time {
+}
+
+div.post div.postfooter {
+  margin-top: 20px;
+  padding-left: 20%;
+  padding-right: 20%;
+  border-bottom: 1px solid #ccc;
+}
+
+div.post p.time {
+  font-size: 1.4em;
+  margin-top: 1.0em;
+  font-weight: bold;
+  color: #777;
+  font-variant:small-caps;
+}
