@@ -24,6 +24,23 @@
   background: radial-gradient(center, circle cover, #057bc3 0%, #005a98 100%);
 }
 
+.bluesky .reveal h1,
+.bluesky .reveal h2,
+.bluesky .reveal h3,
+.bluesky .reveal h4,
+.bluesky .reveal h5,
+.bluesky .reveal h6,
+.bluesky .reveal p,
+.bluesky .reveal div,
+.bluesky .reveal ul li {
+  color: white;
+}
+
+.bluesky .reveal a {
+  color: pink;
+  text-decoration: underline;
+}
+
 img {
   box-shadow: none !important;
 }
@@ -63,6 +80,11 @@ table.lined td {
 
 .large {
   font-size: 1.3em !important;
+  line-height: 1.1em !important;
+}
+
+ul.large li {
+  margin-bottom: 10px;
 }
 
 .huge {

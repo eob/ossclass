@@ -56,3 +56,12 @@ div.post p.time {
   color: #777;
   font-variant:small-caps;
 }
+
+div.class h1 {
+  padding-top: 30px;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+  color: #222;
+  padding-left: 5px;
+  border-bottom: 5px solid #666;
+}

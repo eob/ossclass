@@ -6,11 +6,11 @@ lozenge: home
 ---
 
 <div class="row">
-  <div class="span7 offset1">
+  <div class="span6 offset1">
     {% for post in site.posts %}
     <div class="post">
       <div class="row">
-        <div class="span5">
+        <div class="span4">
           <h3>{{post.title}}</h3>
         </div>
         <div class="span2">
@@ -25,20 +25,15 @@ lozenge: home
       </div>
   {% endfor %}
   </div>
-  <div class="span3">
+  <div class="span4">
     <div class="row">
-      <div class="span3">
+      <div class="span4">
         <br />
         <div class="well">
-          <p><b>6.S194:<br />Open Source <br />Software Project Lab</b></p>
-<p>
-Monday and Wednesday<br />
-3:00 - 4:30<br />
-<a href="http://whereis.mit.edu/?go=24">24-121</a></p>
-<p>
-  <a href="http://www.edwardbenson.com/">Ted Benson</a><br />
-  <a href="http://people.csail.mit.edu/karger/">David Karger</a><br />
-</p>
+          {% include class-info.html %}
+        </div>
+        <div class="well">
+          {% include class-list.html %}
         </div>
       </div>
     </div>
