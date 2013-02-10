@@ -1,0 +1,231 @@
+---
+layout: presentation
+title: Hot Git Works
+metadescription: 6.S194 Presentation on how git works
+theme: oscar
+---
+
+<section id="slide-title" data-state="bluesky">
+  <h1>Version Control</h1>
+  <p>
+    <div class="attribution">
+    <a href="http://www.edwardbenson.com/">Ted Benson</a><br />
+    @edwardbenson / eob@csail.mit.edu
+    </div>
+  </p>
+</section>
+
+<section>
+  <h1>Goal</h1>
+  <h2>Become a master of git-fu</h2>
+  <ul>
+    <li>Understand the model</li>
+    <li>Practice workflow tasks</li>
+  </ul>
+</section>
+
+<section>
+  <section data-state="whiteout">
+    <h2>version control system</h2>
+    <h2>=</h2>
+    <table>
+      <tr>
+        <td style="vertical-align: middle">
+          <h3>industrial strength dropbox&nbsp;&nbsp;</h3>
+        </td>
+        <td><img style="float: left;" src="img/dropbox.png" /></td>
+      </tr>
+    </table>
+    </section>
+
+    <section data-state="bluesky">
+    <div style="margin-left: 15%; height: 10em; width: 70%; border: 10px dashed #ccc; text-align: middle;">
+      <br /><br /><br />
+      your code project
+    </div>
+    </section>
+
+    <section data-state="bluesky">
+    <ul class="large">
+      <li>Keep track of changes
+      <div class="elaboration">
+        label, revert
+      </div>
+      </li>
+      <li>Fork and Sandbox</li>
+      <li>Merge, Compare Versions</li>
+      <li>Coordinate</li>
+      <li>Impose Workflow Checks</li>
+    </ul>
+    <aside class="notes">
+    <ul>
+      <li>move forward and back. undo. mark releases</li>
+      <li>isolate feature development</li>
+      <li>take two different versions and compare</li>
+      <li>centralized repo, lots of people use</li>
+      <li>The centralized repo acts as a gate</li>
+    </ul>
+    </aside>
+    </section>
+
+    <section data-state="bluesky">
+    <h3>How would you design this?</h3>
+    <aside class="notes">
+    <ul>
+      <li>Network diagram? hub-and-spokes</li>
+      <li>Everyone syncs with that</li>
+      <li>Want lots of projects, so parameterize with a dotfile</li>
+      <li>How do you represent a change</li>
+      <li>How do you handle conflict?</li>
+    </ul>
+    </aside>
+    </section>
+</section>
+
+<section>
+  <section data-state="bluesky">
+  <h1>Centralized, Delta-based VCS</h1>
+  <h3>SVN, CVS, Perforce, ClearCase</h3>
+  </section>
+</section>
+
+<section>
+  <section>
+  <h1>Intro to Git</h1>
+  </section>
+
+  <section>
+  <p class="large">Git is an open source, distributed, version control system designed for speed and efficiency.</p>
+  </section>
+
+  <section>
+  <h2>Distributed v. Centralized</h2>
+  <table>
+    <tr>
+      <th style="padding-right:60px !important;">Distributed</th><th>Centralized</th>
+    </tr>
+    <tr>
+      <td>
+        <ul>
+          <li>git</li>
+          <li>Mercurial</li>
+          <li>Bazaar</li>
+        </ul>
+      </td>
+    <td>
+      <ul>
+        <li>Perforce</li>
+        <li>Subversion</li>
+        <li>ClearCase</li>
+        <li>CVS</li>
+      </ul>
+    </td>
+    </tr>
+  </table>
+  </section>
+
+  <section>
+    <h2>Centralized Version Control</h2>
+    <img src="img/centralized-version-control.png" />
+    <aside class="notes">
+    <ul>
+      <li>Why is this good / bad?</li>
+      <li>Good: We know who the authority is; control</li>
+      <li>Bad: Network overhead; permissions; downtime</li>
+      <li>Bad: single point of failure; no personal VC</li>
+    </ul>
+    </aside>
+  </section>
+
+  <section>
+    <h2>Distributed Version Control</h2>
+    <img src="img/distributed-version-control.png" />
+    <aside class="notes">
+      <ul>
+        <li>Almost all operations (except sync) are local</li>
+        <li>Good: local = fast (commit, diff, history, etc); personal VC</li>
+        <li>Good: local = airplane, no VPN OK; every clone is a backup</li>
+        <li>Bad(?): need to create workflow to coordinate</li>
+      </ul>
+    </aside>
+  </section>
+
+  <section>
+    <h2>How do you Track Versions?</h2>
+    <p><b>File Deltas</b>: Database stores a sequence of diffs for each file.</p>
+    <p><b>Snapshots</b>: Database stores <em>snapshots</em> of the whole repository.</p>
+    <aside class="notes">
+      <p>Talk about tradeoffs.</p>
+      <p>Deltas: slow because you have to replay edit scripts.</p>
+      <p>Deltas: nice because you can just check out a portion of repo</p>
+    </aside>
+  </section>
+
+  <section>
+    <h2>File Delta Version Tracking</h2>
+    <img src="img/file-deltas-1.png" />
+    <aside class="notes">
+    </aside>
+  </section>
+
+  <section>
+    <h2>File Delta Version Tracking</h2>
+    <img src="img/file-deltas-2.png" />
+    <aside class="notes">
+    </aside>
+  </section>
+
+  <section>
+    <h2>File Delta Version Tracking</h2>
+    <img src="img/file-deltas-3.png" />
+    <aside class="notes">
+    </aside>
+  </section>
+
+  <section>
+    <h2>File Delta Version Tracking</h2>
+    <img src="img/file-deltas-4.png" />
+    <aside class="notes">
+    </aside>
+  </section>
+
+  <section>
+    <h2>Snapshot Version Tracking</h2>
+    <img src="img/snapshot-1.png" />
+    <aside class="notes">
+    </aside>
+  </section>
+
+  <section>
+    <h2>Snapshot Version Tracking</h2>
+    <img src="img/snapshot-2.png" />
+    <aside class="notes">
+    <ul>
+      <li><em>add</em> means add file contents to the snapshot</li>
+      <li>The SHA hash is a pointer into a key-value store.</li>
+    </ul>
+    </aside>
+  </section>
+
+  <section>
+    <h2>Snapshot Version Tracking</h2>
+    <img src="img/snapshot-3.png" />
+    <aside class="notes">
+      <ul>
+        <li>There is no history unless you walk through the manifests.</li>
+      </ul>
+    </aside>
+  </section>
+
+  <section>
+    <h2>Snapshot Version Tracking</h2>
+    <img src="img/snapshot-4.png" />
+    <aside class="notes">
+      <ul>
+        <li>A rename just changes the manifest pointer.
+      </ul>
+    </aside>
+  </section>
+
+</section>
+
