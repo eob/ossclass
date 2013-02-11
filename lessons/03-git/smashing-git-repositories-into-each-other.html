@@ -53,16 +53,19 @@ git clone git://github.com/software-development/kafka.git
   | - same.txt
 </pre>
 
-<h3>Step 3: Notice the Differences</h3>
+<h2>Step 3: Notice the Differences</h2>
 
 <p>Explore the differences in the two repositories. Some are simply different
 files, but others content differences within files of the same name.</p>
 
 <div class="alert alert-info">
-What do you think would happen, <b>file per file</b> if you try to pull the Kafka repository into Patriot Act repository?
+  
+  What do you think would happen, <b>file per file</b>, if you try to pull the
+  Kafka repository into Patriot Act repository?
+
 </div>
 
-<h3>Step 4: Super Smash Bros.</h3>
+<h2>Step 4: Super Smash Bros.</h2>
 
 First, create a <i>new clone</i> of the Patriot Act repository (so you'll be
 able to compare it to the old one.)
@@ -81,13 +84,57 @@ Next, let's add a shortcut to the Kafka repository from inside <b>patriot2</b>:
 git remote add kafka git://github.com/software-development/kafka.git
 </pre>
 
-Recall that a <b>remote</b> in git is just like a nick-name for some other
+<p>Recall that a <b>remote</b> in git is just like a nick-name for some other
 repository. The configuration for remotes are stored in `.git/config`. You can
-see the configuration for the new remote you just added by typing:
+see the configuration for the new remote you just added by typing:</p>
 
 <pre>
 cat .git/config
 </pre>
 
+<p>Now pull from the remote <b>kafka</b> repository on Github into the local
+<b>patriot2</b> repository on your disk.</p>
 
+<pre>
+git pull kafka master
+</pre>
 
+You'll see the following message:
+
+<pre>
+From git://github.com/software-development/kafka
+ * branch            master     -> FETCH_HEAD
+Auto-merging append.txt
+CONFLICT (add/add): Merge conflict in append.txt
+Auto-merging all-different.txt
+CONFLICT (add/add): Merge conflict in all-different.txt
+Auto-merging README.md
+CONFLICT (add/add): Merge conflict in README.md
+Automatic merge failed; fix conflicts and then commit the result.
+</pre>
+
+<h2>Step 5: What happened?</h2>
+
+Inspect the files in your repository again, both their names and contents. Come
+up with an explanation for why each file currently in the repository is in its
+current state:
+
+<ul>
+  <li>README.md</li>
+  <li>all-different.txt</li>
+  <li>append.txt</li>
+  <li>hr3162.txt</li>
+  <li>metamorphosis.txt</li>
+  <li>same.txt</li>
+</ul>
+
+<div class="alert alert-info">
+
+  You just smashed two repositories into each other.
+  
+  <ul>
+    <li>Why is this even possible? </li>
+    <li>What does the git object graph look like?</li>
+    <li>How do you patch up the state of these conflicting files?</li>
+  </ul>
+</div>
