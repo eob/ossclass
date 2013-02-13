@@ -2,10 +2,17 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Git Blackbelt 101</title>
+    <title>Become a Git Master</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A lab-based class in large-scale software development">
     <meta name="author" content="Ted Benson">
+    
+    <!-- CODE HIGHLIGHTING --> 
+    <link href="/6.S194/css/sh/default.css" rel="stylesheet">
+    <script src="/6.S194/js/sh.min.js"></script>
+    <script src="/6.S194/js/sh-python.min.js"></script>
+    <script src="/6.S194/js/sh-javascript.min.js"></script>
+    
     <link href="/6.S194/css/bootstrap.min.css" rel="stylesheet">
     <link href="/6.S194/css/bootstrap-responsive.min.css" rel="stylesheet">
     <link href="/6.S194/css/example.css" rel="stylesheet">
@@ -42,268 +49,60 @@
       <div class="content">
         <div class="row">
   <div class="span7 offset1 class">
-    		    <section id="slide-title">
-          <h1>Collaborating with Git</h1>
-          <p>
-            <small>
-              <a href="http://www.edwardbenson.com/">Ted Benson</a><br />
-              @edwardbenson / eob@csail.mit.edu
-            </small>
-          </p>
-        </section>
+    <h1>Become a Git Master</h1>
 
-		    <section>
-          <h1>Goal</h1>
-          <h2>Hands on activities to get you acquainted with git workflow.</h2>
-        </section>
+<h3>In Class</h3>
 
-        <section>
-  		    <section>
-            <h1>Intro to Git</h1>
-            <p></p>
-          </section>
+<ol>
+  <li>Version control: the big picture (<a href="vcs.html">slides</a>)</li>
+  <li>Git commands and metaphors (<a href="git-commands-and-metaphors.html">slides</a>)</li>
+  <li><span class="label label-info">Exercise</span> <a href="creating-a-personal-git-repository.html">Creating a Personal Git Repository</a></li>
+  <li>Under the Hood (<a href="git-internally.html">slides</a>)</li>
+  <li><span class="label label-info">Exercise</span> <a href="smashing-git-repositories-into-each-other.html">Smashing Git Repositories Into Each Other</a></li>
+  <li>Team Workflow, Rebasing, and Good Behavior (<a href="team-workflow.html">Slides</a>)</li>
+  <li>Working over Github</li>
+  <li><span class="label label-info">Exercise</span> <a href="pull-requests-and-rebasing.html">Pull Requests and Rebasing</a></li>
+  <li><span class="label label-info">Exercise</span> <a href="adding-custom-hooks-to-git.html">Adding Custom Hooks</a></li>
+</ol>
 
-  		    <section>
-            <p class="large">Git is an open source, distributed, version control system designed for speed and efficiency.</p>
-          </section>
+<p>The last exercise is pretty do-it-yourself. If we don't have time in class,
+hooks are a very cool feature: take the 10 minutes yourself to try it out!</p>
 
-  		    <section>
-            <h2>Distributed v. Centralized</h2>
-            <table>
-              <tr>
-                <th style="padding-right:60px !important;">Distributed</th><th>Centralized</th>
-              </tr>
-              <tr>
-                <td>
-                  <ul>
-                    <li>git</li>
-                    <li>Mercurial</li>
-                    <li>Bazaar</li>
-                  </ul>
-                </td>
-                <td>
-                  <ul>
-                    <li>Perforce</li>
-                    <li>Subversion</li>
-                    <li>ClearCase</li>
-                    <li>CVS</li>
-                  </ul>
-                </td>
-              </tr>
-            </table>
-          </section>
+<h3>See Also</h3>
 
-          <section>
-            <h2>Centralized Version Control</h2>
-            <img src="img/centralized-version-control.png" />
-            <aside class="notes">
-              <ul>
-                <li>Why is this good / bad?</li>
-                <li>Good: We know who the authority is; control</li>
-                <li>Bad: Network overhead; permissions; downtime</li>
-                <li>Bad: single point of failure; no personal VC</li>
-              </ul>
-            </aside>
-          </section>
+<ul>
+  <li><a href="http://www.git-scm.com">The Git Website</a></li>
+  <li><a href="http://www.git-scm.com/book">Pro Git</a> An excellent book that is free online.</li>
+  <li><a href="http://www.github.com">Github</a></li>
+</ul>
 
-          <section>
-            <h2>Distributed Version Control</h2>
-            <img src="img/distributed-version-control.png" />
-            <aside class="notes">
-              <ul>
-                <li>Almost all operations (except sync) are local</li>
-                <li>Good: local = fast (commit, diff, history, etc); personal VC</li>
-                <li>Good: local = airplane, no VPN OK; every clone is a backup</li>
-                <li>Bad(?): need to create workflow to coordinate</li>
-              </ul>
-            </aside>
-          </section>
+<h3>Geek Cred</h3>
 
-          <section>
-            <h2>How do you Track Versions?</h2>
-            <p><b>File Deltas</b>: Database stores a sequence of diffs for each file.</p>
-            <p><b>Snapshots</b>: Database stores <em>snapshots</em> of the whole repository.</p>
-            <aside class="notes">
-              <p>Talk about tradeoffs.</p>
-              <p>Deltas: slow because you have to replay edit scripts.</p>
-              <p>Deltas: nice because you can just check out a portion of repo</p>
-            </aside>
-          </section>
+<p style="font-size: 1.2em"><b><i>hash bang slash bin slash bash</i></b>
 
-          <section>
-            <h2>File Delta Version Tracking</h2>
-            <img src="img/file-deltas-1.png" />
-            <aside class="notes">
-            </aside>
-          </section>
+<p>Defined on Everything2 as:</p>
 
-          <section>
-            <h2>File Delta Version Tracking</h2>
-            <img src="img/file-deltas-2.png" />
-            <aside class="notes">
-            </aside>
-          </section>
+<blockquote>
+  The "accepted" pronunciation of invoking the Bourne Again SHell, or Bash.
 
-         <section>
-            <h2>File Delta Version Tracking</h2>
-            <img src="img/file-deltas-3.png" />
-            <aside class="notes">
-            </aside>
-         </section>
+  #!/bin/bash
+</blockquote>
 
-         <section>
-            <h2>File Delta Version Tracking</h2>
-            <img src="img/file-deltas-4.png" />
-            <aside class="notes">
-            </aside>
-         </section>
+<p>You used that incantation in the git hooks exercise. In general, when you
+want a file in a *nix system to be executable, change it's permissions to +x
+(aka <code>chmod u+x</code> or <code>chmod a+x</code>) and then add a special
+line at the top that tells the shell how to invoke the necessary interpreter.
+<code>#!</code> means "run" and the rest of the line is the absolute path to
+the program that will interpret the rest of the file.</p>
 
-         <section>
-            <h2>Snapshot Version Tracking</h2>
-            <img src="img/snapshot-1.png" />
-            <aside class="notes">
-            </aside>
-         </section>
+<p>So a bash script traditionally uses <b>hash bang slash bin slash bash</b> or
+<code>#!/bin/bash</code>, whereas a python script might use
+<code>#!/usr/bin/python</code></p>
 
-         <section>
-            <h2>Snapshot Version Tracking</h2>
-            <img src="img/snapshot-2.png" />
-            <aside class="notes">
-              <ul>
-                <li><em>add</em> means add file contents to the snapshot</li>
-                <li>The SHA hash is a pointer into a key-value store.</li>
-              </ul>
-            </aside>
-         </section>
-
-         <section>
-            <h2>Snapshot Version Tracking</h2>
-            <img src="img/snapshot-3.png" />
-            <aside class="notes">
-              <ul>
-                <li>There is no history unless you walk through the manifests.</li>
-              </ul>
-            </aside>
-         </section>
-
-         <section>
-            <h2>Snapshot Version Tracking</h2>
-            <img src="img/snapshot-4.png" />
-            <aside class="notes">
-              <ul>
-                <li>A rename just changes the manifest pointer.
-              </ul>
-            </aside>
-         </section>
+<p>You can typically find out what the absolute path for a command is by
+running <code>which CMD</code> (as in, <code>which python</code>)</p>
 
 
-        </section>
-
-		    <section id="slide-title">
-
-          <section>
-            <h1>Personal Version Control</h1>
-            <h2>Exercise 1</h2>
-              <ul>
-                <li>Creating a repository</li>
-                <li>Committing changes</li>
-                <li>Navigating through history</li>
-              </ul>
-
-          </section>
-
-          <section>
-            <h2>Creating a Repository</h2>
-            <table class="lined">
-              <tr>
-                <td><span class="cmd">git init</span></td>
-                <td>Create from Scratch</td>
-              </tr>
-              <tr>
-                <td><span class="cmd">git init --bare</span></td>
-                <td>Create from Scratch <br />"Server-mode"</td>
-              </tr>
-              <tr>
-                <td><span class="cmd">git clone</span></td>
-                <td>Copy a Repo</td>
-              </tr>
-            </table>
-          </section>
-
-        </section>
-
-		    <section id="slide-title">
-          <h1>Branches</h1>
-          <h2>Exercise 2</h2>
-        </section>
-
-		    <section id="slide-title">
-          <h1>Multiple Repositories (SSH)</h1>
-          <h2>Exercise 3</h2>
-        </section>
-
-		    <section id="slide-title">
-          <h1>Github</h1>
-          <h2>Exercise 4</h2>
-        </section>
-
-		    <section id="slide-title">
-          <h1>Github</h1>
-          <h2>Exercise 5</h2>
-        </section>
-
-        <section>
-          <h1>Attribution</h1>
-          <p>Thanks to:
-            <ul>
-              <li>Scott Chacon's Github presentation, which provided a template for much of the git intro.</li>
-              <li>Clip Art from: </li>
-            </ul>
-          </p>
-        </section>
-
-
-      </div>
-    </div>
-		<script src="lib/js/head.min.js"></script>
-		<script src="lib/js/reveal.min.js"></script>
-    <script>
-			// Full list of configuration options available here:
-			// https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				controls: true,
-				progress: true,
-				history: true,
-				center: true,
-
-				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
-
-				// Optional libraries used to extend on reveal.js
-				dependencies: [
-					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					//{ src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					//{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'lib/js/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'lib/js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-					{ src: 'lib/js/notes.js', async: true, condition: function() { return !!document.body.classList; } }
-					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
-				]
-			});
-		</script>
-    <script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-619489-20']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-  </script>
-  </body>
-</html>
 
   </div>
   <div class="span3">
@@ -315,7 +114,7 @@
 <ol>
   <li><a href="/6.S194/lessons/01-introduction/index.html">Introduction</a> (W 2/6)</li>
   <li><a href="/6.S194/lessons/02-bootup/index.html">Bootup</a> (M 2/11)</li>
-  <li>Become a Git Master (W 2/13)</li>
+  <li><a href="/6.S194/lessons/03-git/index.html">Become a Git Master</a> (W 2/13)</li>
   <li>Ajax: Mechanics and Design (M 2/18)</li>
   <li>Design Studio (W 2/20)</li>
   <li>Debugging (T 2/26)</li>

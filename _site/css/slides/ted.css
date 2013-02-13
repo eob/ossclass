@@ -140,3 +140,9 @@ table.small td {
   font-size: 0.8em !important;
   line-height: 0.9em !important;
 }
+
+p.source {
+  text-align: right;
+  font-style: italic;
+  font-size: 0.4em;
+}

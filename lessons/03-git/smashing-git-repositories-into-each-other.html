@@ -6,6 +6,16 @@ exercise: 03-git
 
 <h1>Giant Git Repositories Smashing Into Other Giant Git Repositories</h1>
 
+<div class="figure figure-center" style="width: 400px">
+  <img src="img/robot-fight.jpg" width="300px" />
+  <div class="legend">
+    <div class="caption">
+      <b>Figure 1.</b> Robots smashing into other robots.
+    </div>
+    <div class="credits"><a href="http://www.china.org.cn/video/2010-03/23/content_19663739.htm">source</a></div>
+  </div>
+</div>
+
 <p>This exercise shows you that, at heart, git truly is just a giant object
 graph.</p>
 
@@ -113,11 +123,11 @@ CONFLICT (add/add): Merge conflict in README.md
 Automatic merge failed; fix conflicts and then commit the result.
 </pre>
 
-<h2>Step 5: What happened?</h2>
+<h2>Step 5: Cleaning Up The Mess</h2>
 
-Inspect the files in your repository again, both their names and contents. Come
-up with an explanation for why each file currently in the repository is in its
-current state:
+<p>Inspect the files in your repository again, both their names and
+contents. Come up with an explanation for why each file currently in the
+repository is in its current state:</p>
 
 <ul>
   <li>README.md</li>
@@ -128,9 +138,67 @@ current state:
   <li>same.txt</li>
 </ul>
 
-<div class="alert alert-info">
+<p>Now run a <code>git status</code> command.</p>
 
-  You just smashed two repositories into each other.
+<p>What you are seeing in some of them is git's way of showing you a
+file it doesn't know how to merge:</p>
+
+<pre>
+&lt;&lt;&lt;&lt;&lt;&lt;&lt;  HEAD
+Why did the chicken cross the road?
+=======
+to get to the other side
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; 18b5e56bc02acbc17e67a7849d467efc1c79a5d0
+</pre>
+
+<p>The &lt;&lt; bit and the &gt;&gt; bit enclose the region with
+differences, and the equal signs divide it into two. On the top, we see
+the <code>HEAD</code>'s version of what should be there (this is your
+local repository. On the bottom we see commit <code>18b5e5</code>'s
+version. What you pulled in.</p>
+
+<p>Fix these conflicting files, then tell git that you've solved all the problems by <code>git add</code>ing them and committing that changeset with the log message "Reconciled differences"</p>
+
+<h2>Step 6: Lookng Back</h2>
+
+<p>Now that you've reconciled, and committed, the differences, Let's
+take a visual look at what's going on in there. The <code>git
+  log</code> command will show you a simple picture of what's going on.
+Try typing that.</p>
+
+<p>We can do better than that, though. Add the following to your
+<code>~/.gitconfig</code> file:</p>
+
+<pre>
+[alias]
+lg1 = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)— %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative
+lg2 = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(bold white)— %an%C(reset)' --abbrev-commit
+lg = !"git lg2"
+</pre>
+
+<p>This will let you type <code>git lg</code> for a more visual
+depiction of what is going on (showing branches, etc).</p>
+
+<pre style="font-size: 0.7em">
+*   d9c94f8 - Wed, 13 Feb 2013 10:32:32 -0500 (7 minutes ago) (HEAD, master)
+|\            Reconciled differences — Ted Benson
+| * 8708113 - Wed, 13 Feb 2013 10:29:43 -0500 (10 minutes ago)
+|             First commit into Kafka Repository — Ted Benson
+* 9b5d3bd - Wed, 13 Feb 2013 10:30:34 -0500 (9 minutes ago) (origin/master, origin/HEAD)
+            First commit into the Patriot Repository — Ted Benson
+</pre>
+
+<p>You're at the head -- the top line -- and you now have two parents!</p>
+
+<p>Try moving between them and verifying (via <code>ls</code> and file inspection) that you truly have <b>both</b> the Patriot Act and Metamorphosis as separate parents!</p>
+<ul>
+  <li>git checkout 8708113</li>
+  <li>git checkout 9b5d3bd</li>
+  <li>git checkout master</li>
+</ul>
+
+<div class="alert alert-info">
+  <p>You just smashed two repositories into each other.</p>
   
   <ul>
     <li>Why is this even possible? </li>
@@ -138,3 +206,6 @@ current state:
     <li>How do you patch up the state of these conflicting files?</li>
   </ul>
 </div>
+
+<p>Hopefully, this exercize has shown you that a "repository" in git is
+far more flexible a data structure than you may have believed!</p>
