@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Project Bootup</title>
+    <title>Ajax</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A lab-based class in large-scale software development">
     <meta name="author" content="Ted Benson">
@@ -49,50 +49,41 @@
       <div class="content">
         <div class="row">
   <div class="span7 offset1 class">
-    <h1>Bootup</h1>
+    <h1>Everything you ever wanted to know about web requests</h1>
 
-Because of the staggered start of this class (hackathon at Facebook, etc),
-different groups are at different stages. The goal of this class, and the
-hackathon this weekend, is to provide time for everyone to reach highway speed
-so that we're all even.
+<p>The web presents a strange programming model because it forces you into writing
+an application that runs on two computers at once. This presents a number of
+challenges in application design and state management. All of these design
+issues, however, are ultimately influenced and built on top of the fundamental
+relationship that the browser has with the server.</p>
 
-<h2>In Class</h2>
+<p>The goal of this lesson is to fully describe that browser-server relationship.
+If you understand the details about how the browser makes requests to the
+server, you will be able to make better decisions when faced with higher-level
+design choices.</p>
 
-<p>We'll be handing out <a href="checklist.pdf">this checklist</a> for you to
-fill out, due next Monday. This contains a set of goals, individual and
-team-related, for you to make sure you're up and running with your project.</p>
+<p>We will target:</p>
 
-<h2>Journal Question</h2>
+<ul>
+  <li>What's in a web request</li>
+  <li>Life cycle of a web request</li>
+  <li>Ajax and Ajax Styles</li>
+  <li>The web security model</li>
+</ul>
 
-<div class="alert alert-info">
-  What do you hope to get out of this class?
-</div>
+<a href="notes.html">Ted's notes</a> (no slides this time)
 
-Journaling starts this week! Please submit your response by class time on each
-Monday. Here are the <a href="../../journal.html">Journal guidelines</a> and <a
-  href="../../submit.html">submission instructions</a>.
+<h2>See Also</h2>
 
-<h2>Design Studio Crit</h2>
-
-We'll start <b>next Wednesday (2/20)</b> with the design studio crit portion of
-the course. First on the docket (randomly chosen) is <b>Rails</b> and
-<b>Phabricator</b>. I'll be providing more information later this week about
-the process and how to prepare.
+<ul>
+  <li><a href="http://www.w3.org/TR/navigation-timing/">W3C Navigation Timing Recommendation</a></li>
+  <li><a href="http://www.w3.org/TR/navigation-timing/timing-overview.png">Request Timing Overview Diagram</a></li>
+</ul>
 
 <h2>Geek Cred</h2>
 
-<ul>
 
-  <li><b><a href="http://en.wikipedia.org/wiki/Telenet">Telenet</a></b>. These
-  days, the "telnet" protocol is barely even uttered but even more distant in
-  memory is "tel<b>e</b>net". Back in the day, long-distance telephone calls
-  cost money, so you had to think about geography when visiting a
-  bulletin-board system. Telenet acted as a worm-hole of sorts: you could hop
-  on by dialing your nearest telenet machine, then route your way to another
-  city and out to the computer you needed to connect to. Commonplace, now, but
-  a big deal for consumers at the time.</li>
 
-</ul>
 
   </div>
   <div class="span3">
