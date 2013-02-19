@@ -22,7 +22,7 @@ design choices.
 
 We will target:
 
-*  What's in a web request
+*  What's a web request
 *  Life cycle of a web request
 *  Ajax and Ajax Styles
 *  The web security model
@@ -37,8 +37,25 @@ those begin to eek into server-side application territory.
 For this lesson, we're interested in the code that initiates web connections:
 be it a browser, a Javascript call, or an API request.
 
-What's in a Web Request
------------------------
+* *Nihonbashi aside*.
+
+What, Semantically, is a Web Request
+------------------------------------
+
+At the very basic level, an HTTP request made from the browser to the server.
+The reason for this request has changed over the years, and understanding that
+helps understand why things are the way they are today.
+
+This isn't a timeline, per say, as all these models are still used productively
+today, but they were developed this order:
+
+1.  **The original web**, which operated like browsable set of hypertext FTP servers. Interestingly today's Wikipedia is, in some ways, a microcosm of what the original web was: a linked, editable, text based collection of documents.
+2.  **The CGI model**, where some pages were programs, and the web request was program input
+3.  **The REST model**, where web applications were organized as a set of resources, and each resource had a URL that pointed to it
+4.  **The application model**, where web requests are really API calls into a back-end server application
+
+What are the parts of a web request
+-----------------------------------
 
 ### URL Part
 
@@ -59,19 +76,30 @@ What's in a Web Request
 * Headers
   * What response types you accept back, etc
 
-### If a web site is a collection of documents
+### These take on differet meaning depending on how you're using the web
 
-Then `PROTO://DOMAIN:PORT/PATH` references a document. The HTTP verb specifies
+* **If a web site is a collection of documents** Then `PROTO://DOMAIN:PORT/PATH` references a document. The HTTP verb specifies
 an action on that document. The rest is largely irrelevant.
-
-### If a web site is docuents + CGI scripts
-
-Then URL params, cookies, and post data represent input to those scripts. Those
+* **If a web site is docuents + CGI scripts** Then URL params, cookies, and post data represent input to those scripts. Those
 script, in turn, return *customized* documents.
+* **If you're building a REST site** then the **path** and **verb** are particularly important
+* **If a web site is an application** then each request is just an API call and payload design is important.
 
-### If a web site is an application
+In the document (`.html`) or CGI (`.php`) case, the **path** literally
+references a file. In the REST and application context, the **path** is a
+semantic address into your application.
 
-Then each web request is an API call into that application.
+<div class="demo">
+  <h4>What are three different ways to:</h4>
+  <ul>
+    <li>Get a list of photos with the tag <code>beach</code></li>
+    <li>Delete a photo. (confirmation?)</li>
+    <li>Add a photo</li>
+    <li>Edit a photo</li>
+  </ul>
+
+  <p>Do for each style. Last two styles is less of a difference, perhaps request/response type</p>
+</div>
 
 The Life of a Web Request
 -------------------------
@@ -107,9 +135,7 @@ reasons. The browser gives you a number of mecahanisms to cache content
 locally, such that the network portion of this pipeline is completely skipped.
 With HTML5 you even have access to the cache controls from within Javascript.
 
-<div class="demo">
-  <h4>HTML5 Manifest Demo</h4>
-</div>
+
 
 ### Once you hit the browser
 
@@ -117,15 +143,22 @@ The document is scanned in linear order. Linked Javascript, scripts in the head
 are implemented in blocking fashion (unless in closure?) The in the body in
 linear fashion.
 
-<div class="demo">
+<div class="alert alert-info">
   <h4>Script Ordering Demo</h4>
-  <p>Show timing differences</p>
+  <p>What order do you think the statements will output in?</p>
+  <p>In which script elements can you modify the dom?</p>
 </div>
 
 ### Scripts
 
 Life of an Ajax Requset
 -----------------------
+
+### Ajax Styles
+
+* UI Replacement (basically, like IFRAMEs)
+* UI Updates
+* Data requests
 
 ### Callbacks
 
@@ -209,11 +242,37 @@ A preflight response looks like:
    Access-Control-Allow-Headers: X-Custom-Header
    Content-Type: text/html; charset=utf-8
 
-<div class="demo">
+<div class="alert alert-info">
   <h4>Enabling CORS Headers</h4>
+  <p>CORS demo on website</p>
   <p>Do it on my computer. Have to rebase</p>
 </div>
 
-### Ajax Styles
+#### Cross Site Request Forgery
 
+* Rely on auto-login with cookies
+* Construct a request to a third-party domain that amounts to a mutating API call
+
+Defenses:
+
+* Check the referrer header at the server-side
+* Generate a token to be added on all form requests
+* Short sessions
+* Require the client to re-log in (or provide auth data with request) for any high-stakes state mutation
+
+If you just adhered to good REST practice (i.e., GET request don't have side
+effects), which class of clients would you fix the problem for? (passive
+attacks against javascript-disabled clients, e.g., you couldn't stash a bad url
+in an `img src`. but you could still use javascript to make a `post` or trick
+the user into submitting a form.
+
+**Talk about importance of filtering for http verb on the server**. Especially
+since a lot of server-side frameworks hide the difference between GET and POST
+data.
+
+<div class="alert alert-info">
+<h4>CSRF Demo</h4>
+<p>Step 1: modify code to prevent passive GET attack</p>
+<p>Step 2: modify code to use tokens</p>
+</div>
 

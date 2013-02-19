@@ -8,7 +8,7 @@ date: Feb 18
 Thanks for coming to the hackathon this weekend. Just a few reminders:
 
 * Tomorrow is Monday schedule, so we have class.
-* Journals are due today for everyone
+* Journals are due at the start of class on Tuesday
 * Status reports are due tonight for teams meeting tomorrow
 
 We're going to delay the first studio critique -- so Rails and Phabricator, you're off the hook for Wednesday :) 
