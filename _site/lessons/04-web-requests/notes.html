@@ -60,7 +60,7 @@
 <p>We will target:</p>
 
 <ul>
-<li>What&#8217;s in a web request</li>
+<li>What&#8217;s a web request</li>
 
 <li>Life cycle of a web request</li>
 
@@ -75,7 +75,27 @@
 
 <p>For this lesson, we&#8217;re interested in the code that initiates web connections: be it a browser, a Javascript call, or an API request.</p>
 
-<h2 id='whats_in_a_web_request'>What&#8217;s in a Web Request</h2>
+<ul>
+<li><em>Nihonbashi aside</em>.</li>
+</ul>
+
+<h2 id='what_semantically_is_a_web_request'>What, Semantically, is a Web Request</h2>
+
+<p>At the very basic level, an HTTP request made from the browser to the server. The reason for this request has changed over the years, and understanding that helps understand why things are the way they are today.</p>
+
+<p>This isn&#8217;t a timeline, per say, as all these models are still used productively today, but they were developed this order:</p>
+
+<ol>
+<li><strong>The original web</strong>, which operated like browsable set of hypertext FTP servers. Interestingly today&#8217;s Wikipedia is, in some ways, a microcosm of what the original web was: a linked, editable, text based collection of documents.</li>
+
+<li><strong>The CGI model</strong>, where some pages were programs, and the web request was program input</li>
+
+<li><strong>The REST model</strong>, where web applications were organized as a set of resources, and each resource had a URL that pointed to it</li>
+
+<li><strong>The application model</strong>, where web requests are really API calls into a back-end server application</li>
+</ol>
+
+<h2 id='what_are_the_parts_of_a_web_request'>What are the parts of a web request</h2>
 
 <h3 id='url_part'>URL Part</h3>
 
@@ -107,18 +127,30 @@
 <li>Headers * What response types you accept back, etc</li>
 </ul>
 
-<h3 id='if_a_web_site_is_a_collection_of_documents'>If a web site is a collection of documents</h3>
+<h3 id='these_take_on_differet_meaning_depending_on_how_youre_using_the_web'>These take on differet meaning depending on how you&#8217;re using the web</h3>
 
-<p>Then <code>PROTO://DOMAIN:PORT/PATH</code> references a document. The HTTP verb specifies an action on that document. The rest is largely irrelevant.</p>
+<ul>
+<li><strong>If a web site is a collection of documents</strong> Then <code>PROTO://DOMAIN:PORT/PATH</code> references a document. The HTTP verb specifies an action on that document. The rest is largely irrelevant.</li>
 
-<h3 id='if_a_web_site_is_docuents__cgi_scripts'>If a web site is docuents + CGI scripts</h3>
+<li><strong>If a web site is docuents + CGI scripts</strong> Then URL params, cookies, and post data represent input to those scripts. Those script, in turn, return <em>customized</em> documents.</li>
 
-<p>Then URL params, cookies, and post data represent input to those scripts. Those script, in turn, return <em>customized</em> documents.</p>
+<li><strong>If you&#8217;re building a REST site</strong> then the <strong>path</strong> and <strong>verb</strong> are particularly important</li>
 
-<h3 id='if_a_web_site_is_an_application'>If a web site is an application</h3>
+<li><strong>If a web site is an application</strong> then each request is just an API call and payload design is important.</li>
+</ul>
 
-<p>Then each web request is an API call into that application.</p>
+<p>In the document (<code>.html</code>) or CGI (<code>.php</code>) case, the <strong>path</strong> literally references a file. In the REST and application context, the <strong>path</strong> is a semantic address into your application.</p>
+<div class='demo'>
+  <h4>What are three different ways to:</h4>
+  <ul>
+    <li>Get a list of photos with the tag <code>beach</code></li>
+    <li>Delete a photo. (confirmation?)</li>
+    <li>Add a photo</li>
+    <li>Edit a photo</li>
+  </ul>
 
+  <p>Do for each style. Last two styles is less of a difference, perhaps request/response type</p>
+</div>
 <h2 id='the_life_of_a_web_request'>The Life of a Web Request</h2>
 
 <p><a href='http://www.w3.org/TR/navigation-timing/'>W3C Navigation Timing Recommendation</a></p>
@@ -174,21 +206,40 @@
 <h3 id='before_you_hit_the_network'>Before you Hit the Network</h3>
 
 <p>The pre-network part of this lifecycle is interesting for caching and offline reasons. The browser gives you a number of mecahanisms to cache content locally, such that the network portion of this pipeline is completely skipped. With HTML5 you even have access to the cache controls from within Javascript.</p>
-<div class='demo'>
-  <h4>HTML5 Manifest Demo</h4>
-</div>
+
 <h3 id='once_you_hit_the_browser'>Once you hit the browser</h3>
 
 <p>The document is scanned in linear order. Linked Javascript, scripts in the head are implemented in blocking fashion (unless in closure?) The in the body in linear fashion.</p>
-<div class='demo'>
+<div class='alert alert-info'>
   <h4>Script Ordering Demo</h4>
-  <p>Show timing differences</p>
+  <p>What order do you think the statements will output in?</p>
+  <p>In which script elements can you modify the dom?</p>
 </div>
 <h3 id='scripts'>Scripts</h3>
 
 <h2 id='life_of_an_ajax_requset'>Life of an Ajax Requset</h2>
 
+<h3 id='ajax_styles'>Ajax Styles</h3>
+
+<ul>
+<li>UI Replacement (basically, like IFRAMEs)</li>
+
+<li>UI Updates</li>
+
+<li>Data requests</li>
+</ul>
+
 <h3 id='callbacks'>Callbacks</h3>
+
+<ul>
+<li>Why are they used?</li>
+
+<li>How to stash state?</li>
+
+<li>Wide versus deep design</li>
+
+<li>Anonymous v. Named</li>
+</ul>
 
 <h3 id='security'>Security</h3>
 
@@ -207,7 +258,11 @@
 <p>It returns you a script</p>
 
 <pre><code> showPictures( data );</code></pre>
-
+<div class='demo'>
+  <h4>Exercise</h4>
+  <p>cross-origin-json.html</p>
+  <p>Have change pushed over Github</p>
+</div>
 <h4 id='cross_origin_resource_sharing_cors'>Cross Origin Resource Sharing (CORS)</h4>
 
 <p>HTML5 Rocks has a <a href='http://www.html5rocks.com/en/tutorials/cors/'>good tutorial</a></p>
@@ -248,8 +303,39 @@ fire onload() or onerror()</code></pre>
 <p>A preflight response looks like:</p>
 
 <p>Access-Control-Allow-Origin: http://api.bob.com Access-Control-Allow-Methods: GET, POST, PUT Access-Control-Allow-Headers: X-Custom-Header Content-Type: text/html; charset=utf-8</p>
+<div class='alert alert-info'>
+  <h4>Enabling CORS Headers</h4>
+  <p>CORS demo on website</p>
+  <p>Do it on my computer. Have to rebase</p>
+</div>
+<h4 id='cross_site_request_forgery'>Cross Site Request Forgery</h4>
 
-<h3 id='ajax_styles'>Ajax Styles</h3>
+<ul>
+<li>Rely on auto-login with cookies</li>
+
+<li>Construct a request to a third-party domain that amounts to a mutating API call</li>
+</ul>
+
+<p>Defenses:</p>
+
+<ul>
+<li>Check the referrer header at the server-side</li>
+
+<li>Generate a token to be added on all form requests</li>
+
+<li>Short sessions</li>
+
+<li>Require the client to re-log in (or provide auth data with request) for any high-stakes state mutation</li>
+</ul>
+
+<p>If you just adhered to good REST practice (i.e., GET request don&#8217;t have side effects), which class of clients would you fix the problem for? (passive attacks against javascript-disabled clients, e.g., you couldn&#8217;t stash a bad url in an <code>img src</code>. but you could still use javascript to make a <code>post</code> or trick the user into submitting a form.</p>
+
+<p><strong>Talk about importance of filtering for http verb on the server</strong>. Especially since a lot of server-side frameworks hide the difference between GET and POST data.</p>
+<div class='alert alert-info'>
+<h4>CSRF Demo</h4>
+<p>Step 1: modify code to prevent passive GET attack</p>
+<p>Step 2: modify code to use tokens</p>
+</div>
   </div>
   <div class="span3">
     <div class="row">
