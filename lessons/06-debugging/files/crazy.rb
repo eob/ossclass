@@ -3,6 +3,9 @@
 #
 # "What to do if you think you might be crazy"
 #
+# To Run:
+#   ruby crazy.rb <credit card number>
+#
 # Things to think about:
 # * Debugging strategies when the code appears correct line-by-line,
 #   but the overall output isn't correct.
