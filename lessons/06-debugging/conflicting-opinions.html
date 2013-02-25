@@ -4,5 +4,24 @@ title: Conflicting Opinions
 lozenge: ex-conflicting
 ---
 
-css bug: something is overriding your rule
+<h1>Conflicting Opinions</h1>
 
+<p>Here's a debugging puzzle that doesn't require you to leave your browser.
+You'll want to start by viewing the source of this page, and then use your
+browser's developer mode to further investigate.</p>
+
+<style>
+  .greenOne {
+    color: green;
+  }
+</style>
+
+<section class="problem">
+  <div class="alert alert-info">
+    <h2>It's not easy being <span class="greenOne">green</span></h2>
+    <div class="alert-body">
+      <p>The following word should be green: <span class="greenOne">green</span>.</p>
+      <p>Why isn't it?</p>
+    </div>
+  </div>
+</section>

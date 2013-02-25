@@ -9,6 +9,10 @@ div.signup {
   padding-top: 10px;
 }
 
+section.problem div.alert div.alert-body p span {
+  color: inherit;
+}
+
 li {
   margin-top: 10px;
 }
@@ -110,3 +114,4 @@ div.class h1 {
   text-align: right;
   font-style: italic;
 }
+

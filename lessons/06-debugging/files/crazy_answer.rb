@@ -1,6 +1,5 @@
 ###############################################################################
-# 6.S194 Debugging Exercise
-#
+# 6.S194 Debugging Exercise #
 # "What to do if you think you might be crazy"
 #
 # Things to think about:
