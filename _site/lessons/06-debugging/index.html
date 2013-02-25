@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Ajax</title>
+    <title>Debugging</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A lab-based class in large-scale software development">
     <meta name="author" content="Ted Benson">
@@ -53,72 +53,90 @@
       <div class="content">
         <div class="row">
   <div class="span7 offset1 class">
-    <h1>Everything you ever wanted to know about web requests</h1>
+    <h1>Debugging</h1>
 
-<p>The web presents a strange programming model because it forces you into
-writing an application that runs on two computers at once. This presents a
-number of challenges in application design and state management. All of these
-design issues, however, are ultimately influenced and built on top of the
-fundamental relationship that the browser has with the server.</p>
-
-<p>The goal of this lesson is to fully describe that browser-server
-relationship.  If you understand the details about how the browser makes
-requests to the server, you will be able to make better decisions when faced
-with higher-level design choices.</p>
-
-<p>We will target:</p>
-
+<p>Everybody knows the standard list of bugs that an Introduction to
+Programming textbook will teach you:
 <ul>
-  <li>What's in a web request</li>
-  <li>Life cycle of a web request</li>
-  <li>Ajax and Ajax Styles</li>
-  <li>The web security model</li>
+  <li>Off by one errors</li>
+  <li>Memory management bugs</li>
+  <li>Uninitialized variables</li>
+  <li>Unvalidated input</li>
+  <li>Null values</li>
+  <li><i>... and so on</i></li>
 </ul>
 
-<a href="notes.html">Ted's notes</a> (no slides this time)
+<p>This lesson has two goals:
+<ul>
+  <li>Fun puzzlers to get you thinking about more subtle errors that often happen</li>
+  <li>Use those puzzlers as an excuse to talk about general bug catching strategies</li>
+</ul>
 
-<h2>See Also</h2>
+<p>The languages and environments for the puzzles are intentionally varied to
+make sure that, for at least some exercises, you'll have to practice debugging
+outside your linguistic comfort zone.</p>
+
+<h2>The Lineup</h2>
+
+<p><i>Please pair up in groups of 3. Have at least one person with NodeJS and
+  one person with Linux/Mac per group</i></p>
 
 <ul>
-  <li><a href="http://www.w3.org/TR/navigation-timing/">W3C Navigation Timing Recommendation</a></li>
-  <li><a href="http://www.w3.org/TR/navigation-timing/timing-overview.png">Request Timing Overview Diagram</a></li>
-  <li>Nihonbashi through the ages: 
-  <a href="http://www.hiroshige.org.uk/hiroshige/views_edo/edo_kikakudo_sanoki_1833_43/images/shower_nihonbashi.jpg">Nihonbashi 1</a>
-  <a href="http://jepang.panduanwisata.com/files/2012/11/nihonbashi-tokyo.jpg">Nihonbashi 2</a>
-  <a href="http://www.japan-guide.com/g3/3033_01.jpg">Nihonbashi 3"</a> (this will only make sense if you came to lecture)</li>
-  <li><a href="http://www.html5rocks.com/">HTML5 Rocks</a>, an awesome guide to HTML5</li>
+  <li>When things don't go as expected
+    <ul>
+      <li><span class="label label-info">Exercise</span> <a href="conflicting-opinions.html">Conflicting Opinions</a> (CSS)</li>
+      <li><span class="label label-info">Exercise</span> <a href="what-to-do-if-you-are-crazy.html">What to do if you think you're going crazy</a> (Ruby)</li>
+      <li><span class="label label-info">Exercise</span> <a href="you-know-what-they-say-about-assumptions.html">You know what they say about assumptions</a> (Python)</li>
+      <li>Discussion: bug hunting strategies when it isn't clear what's wrong, developing a "scent" for what code is doing even if you didn't write it.</li>
+    </ul>
+   </li>
+
+  <li>Debugging distributed systems
+   <ul>
+     <li><span class="label label-info">Exercise</span> <a href="jugglers-dilemma.html">A Juggler's Dilemma</a> (Javascript, NodeJS)</li>
+     <li><span class="label label-info">Exercise</span> <a href="coffee-break.html">Coffee Break</a> (Python)</li>
+     <li><a href="who-am-i.html">Who Am I?</a></li>
+     <li>Discussion: distributed systems, callbacks, multiple machines, timing, distributed logging</li>
+   </ul>
+  </li>
+
+  <li>When failure <b>is</b> an option
+    <ul>
+      <li><span class="label label-info">Exercise</span> <a href="inference-dr-watson.html">Inference, Dr. Watson!</a> (Python)</li>
+      <li>Discussion: research code, failure tolerance, batch processing</li>
+    </ul>
+  </li>
+
+  <li><a href="debugging-large-systems.html">Debugging Large Systems</a></li>
+  <li><a href="debugging-tools.html">Debugging Tools and Challenges</a></li>
 </ul>
 
 <h2>Journal Question</h2>
 
 <div class="alert alert-info">
-  <p>You're in charge of a five person team at a space company and have
-  convinced your boss to let your next project, an operating system for
-  satellites, be open source. As the technical lead of the project, you are
-  responsible for setting the project workflow standards both for your team and
-  for the community at large. How should code be written on your project? How,
-  specifically, do people contribute? And just as importantly, why?</p>
 
-  <p>This journal should be an internal email proposing your workflow design to
-  your team and soliciting feedback from them.</p>
+  <p>At this point, all of you have been spelunking in fairly large codebase
+  for a few weeks. You've skimmed code, read code, written code, compiled code,
+  and used the <code>grep</code> and <code>find</code> commands more than you
+  probably expected you would.</p>
+
+  <ul>
+    <li>What are some <b>specific</b> debugging challenges particular to your
+  project? Think about its project organization, code design, runtime
+  architecture, test suites, etc.</li>
+    <li>Given that they exist, how could one or two of these challenges be mitigated by a developer on the project like you? What processes or techniques could you apply?</li>
+    <li>Could any of these challenges be eliminated alltogether? If so, what would the tradeoffs of that be?</li>
+  </ul>
 </div>
 
 <p>Please submit your response by class time on each Monday. Here are the <a
   href="../../journal.html">Journal guidelines</a> and <a
   href="../../submit.html">submission instructions</a>.</p>
 
+
+
 <h2>Geek Cred</h2>
 
-<p><b><a href="http://en.wikipedia.org/wiki/Gopher_(protocol)">Gopher</a>, the Web that almost was</b></p>
-
-<p>(from Wikipedia):</p>
-
-<blockquote> Gopher is a TCP/IP application layer protocol designed for
-  distributing, searching, and retrieving documents over the Internet. Strongly
-  oriented towards a menu-document design, the Gopher protocol presented an
-  alternative to the World Wide Web in its early stages, but ultimately HTTP
-  became the dominant protocol. The Gopher ecosystem is often regarded as the
-  effective predecessor of the World Wide Web.</blockquote>
 
   </div>
   <div class="span3">

@@ -1,5 +1,6 @@
 ###############################################################################
-# 6.S194 Debugging Exercise #
+# 6.S194 Debugging Exercise
+#
 # "What to do if you think you might be crazy"
 #
 # Things to think about:
@@ -43,11 +44,11 @@ def luhn_check(cardnumber)
   check_digit = digits[-1]
 
   # 3. Counting from the rightmost digit...
-  (-digits.length..-1).each do |idx| 
+  (-digits.length...-1).each do |idx| 
     # 4. For every other digit (starting with the second digit
     #    from the right)
     #    i.e.: [no yes no yes no yes no yes no]
-    is_even = !(idx % 2 != 0)
+    is_even = !(idx % 2)
     if is_even
       # 5. Double the digit
       digits[idx] *= 2
