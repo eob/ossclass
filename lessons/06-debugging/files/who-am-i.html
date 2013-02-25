@@ -1,49 +1,17 @@
 <html>
   <head>
-    <script>
-
-/* Fortune Teller . JS */
-// You can think of this as an object constructor.
-var FortuneTeller = function(fortuneFile, nice) {
-  this._fortuneFile = fortuneFile;
-  this._nice = nice;
-  this._fortunes = [];
-  init();
-};
-
-// You can think of this as a member function of FortuneTeller
-FortuneTeller.prototype.init = function() {
-  // Fetch the fortuen file
-  $.ajax({
-    url: fortuneFile,
-    success: function(data) {
-      this._fortunes = data;
-    },
-    error: function(jqXhr, textStatus, errorThrown) {
-      console.log(textStatus, errorThrown);
-      console.log("The Mysterious Machine has Failed!");
-    });
-};
-
-// You can think of this as a member function of FortuneTeller
-FortuneTeller.prototype.tellFortune = function() {
-  _.each(this._fortunes, function(fortune) {
-  });
-};
-
-FortuneTeller.prototype.displayFortune = function(fortune) {
-  alert(fortune);
-};
-</script>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
+    <script src="fortune-teller.js"></script>
 
   </head>
   <body>
     <h1>The Mysterious Machine!</h1>
-
+    <p><b>Your fortune:</b> <span id="theFortune"></span></p>
 
     <script>
       $(function() {
-        window.fortuneTeller = new FortuneTeller();
+        window.fortuneTeller = new FortuneTeller("fortunes.json");
         fortuneTeller.tellFortune();
       });
     </script>

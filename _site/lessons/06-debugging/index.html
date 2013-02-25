@@ -82,7 +82,7 @@ outside your linguistic comfort zone.</p>
   one person with Linux/Mac per group</i></p>
 
 <ul>
-  <li>When things don't go as expected
+  <li><h3>When things don't go as expected</h3><p><i>... Developing a hound's node for sniffing out errors, even when they're invisible.</i></p>
     <ul>
       <li><span class="label label-info">Exercise</span> <a href="conflicting-opinions.html">Conflicting Opinions</a> (CSS)</li>
       <li><span class="label label-info">Exercise</span> <a href="what-to-do-if-you-are-crazy.html">What to do if you think you're going crazy</a> (Ruby)</li>
@@ -91,24 +91,21 @@ outside your linguistic comfort zone.</p>
     </ul>
    </li>
 
-  <li>Debugging distributed systems
+   <li><h3>Debugging distributed systems</h3><p><i>... When code no longer executes serially</i></p>
    <ul>
      <li><span class="label label-info">Exercise</span> <a href="jugglers-dilemma.html">A Juggler's Dilemma</a> (Javascript, NodeJS)</li>
-     <li><span class="label label-info">Exercise</span> <a href="coffee-break.html">Coffee Break</a> (Python)</li>
-     <li><a href="who-am-i.html">Who Am I?</a></li>
-     <li>Discussion: distributed systems, callbacks, multiple machines, timing, distributed logging</li>
+     <li><span class="label label-info">Exercise</span> <a href="who-am-i.html">Who Am I?</a> (Javascript)</li>
+     <li>Discussion: distributed systems, callbacks, multiple machines, distributed logging, timing</li>
    </ul>
   </li>
 
-  <li>When failure <b>is</b> an option
+  <li><h3>Defensive Programming</h3><p><i>... "Offense wins games, defense wins championships"</i></p>
     <ul>
       <li><span class="label label-info">Exercise</span> <a href="inference-dr-watson.html">Inference, Dr. Watson!</a> (Python)</li>
       <li>Discussion: research code, failure tolerance, batch processing</li>
     </ul>
   </li>
 
-  <li><a href="debugging-large-systems.html">Debugging Large Systems</a></li>
-  <li><a href="debugging-tools.html">Debugging Tools and Challenges</a></li>
 </ul>
 
 <h2>Journal Question</h2>
@@ -133,10 +130,24 @@ outside your linguistic comfort zone.</p>
   href="../../journal.html">Journal guidelines</a> and <a
   href="../../submit.html">submission instructions</a>.</p>
 
-
-
 <h2>Geek Cred</h2>
 
+<p><b>Monkey Patching</b> (also known as duck puntching) refers to the process
+of modifying code while a program is running. It is both powerful, dangerous,
+and controversial. Monkey patching is one of the reasons Ruby on Rails is able
+to do so pmany "magical" things with its API. This is possible because the Ruby
+language allows object definitions to be modified at runtime.</p>
+
+<p>The term, hilariously, comes from <i>guerilla patching</i> (sneaking code in
+at runtime like a military guerilla), which sounds like gorilla, which became
+monkey.</p>
+
+<p>"Duck punching" has a similarly amusing etymology. Duck Typing ("if it walks
+like a duck, and talks like a duck, it is a duck") is a practice in which
+objects are dynamically typed based on their properties (variables and methods)
+rather than a static type assignment (e.g., `Duck d = new Duck()`). But say you
+have a cow, but wanted a duck. You can just "punch" the cow (at run time) with
+new code and force it to walk like a duck.</p>
 
   </div>
   <div class="span3">

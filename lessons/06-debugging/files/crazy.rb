@@ -65,8 +65,8 @@ def luhn_check(cardnumber)
   # 7. If the sum of all resulting numbers (they aren't
   #    quite digits anymore) is mod 10, then the card number
   #    is valid.
-  valid = (digits.inject(:+) % 10 == 0)
-  valid
+  valid = !(digits.inject(:+) % 10)
+  valid # In Ruby, the last statement is implicitly the return value
 end
 
 if __FILE__ == $0
