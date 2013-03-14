@@ -45,9 +45,10 @@ def luhn_check(cardnumber)
 
   # 2. The check digit is the rightmost digit
   check_digit = digits[-1]
-
+  p -digits.length
   # 3. Counting from the rightmost digit...
   (-digits.length...-1).each do |idx| 
+    p idx
     # 4. For every other digit (starting with the second digit
     #    from the right)
     #    i.e.: [no yes no yes no yes no yes no]

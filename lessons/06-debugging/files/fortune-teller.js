@@ -14,12 +14,17 @@ FortuneTeller.prototype.init = function() {
     url: this._fortuneFile,
     dataType: "json",
     success: function(data) {
+      console.log(data);
+      console.log(this);
       this._fortunes = data;
-    },
+      this.tellFortune();
+    }
+  ,
     error: function(jqXhr, textStatus, errorThrown) {
       console.log(textStatus, errorThrown);
       console.log("The Mysterious Machine has Failed!");
-    }
+    },
+    context: this
   });
 };
 
@@ -29,7 +34,7 @@ FortuneTeller.prototype.tellFortune = function() {
     if (fortune.kind == "nice") {
       this.displayFortune(fortune);
     }
-  });
+  }, this);
 };
 
 FortuneTeller.prototype.displayFortune = function(fortune) {
