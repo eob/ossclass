@@ -30,7 +30,9 @@ REVIEWS = """ID,  GPA,   AP_TESTS,  ESSAY_SCORE,  EXTRAS
 # If you're just starting out, it builds you a new dictionary (into_object).
 # If you're adding to an existing dictionary, pass it in instead and
 # it will use that. That mechanism allows you to join multiple tables.
-def BuildStudent(header, schema, row, into_object = {}):
+def BuildStudent(header, schema, row, into_object = None):
+  if into_object is None:
+    into_object = {}
   assert(len(header) == len(schema))
   assert(len(schema) == len(row))
   
@@ -85,6 +87,7 @@ def LoadStudents():
 def AdmitStudents():
   print "MIT Admission Letter Mailer"
   students = LoadStudents()
+  print students
   for sid in students:
     student = students[sid]
     if "GPA" in student and student["GPA"] > 3.9:
