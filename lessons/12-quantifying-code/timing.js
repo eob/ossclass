@@ -1,3 +1,4 @@
+
 function measureTime(otherFunction, iterations) {
   var start = new Date().getTime();
 
